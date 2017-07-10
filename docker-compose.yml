@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+    verba_db:
+        image: postgres:9.6
+        container_name: verba_db
+        environment:
+            - "POSTGRES_DB=quotes"
+        networks:
+            - verba_network
+        volumes:
+            - .db-data:/var/lib/postgresql
+
+    verba_back:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: verba_back:1.0
+        container_name: verba_back
+        ports:
+            - "8000:8000"
+        networks:
+            - verba_network
+        depends_on:
+          - verba_db
+        env_file: .verba_env
+        command: bash -c "/myvenv/bin/python manage.py migrate && /myvenv/bin/python manage.py runserver 0.0.0.0:8000"
+
+networks:
+    verba_network:
+        driver: bridge
