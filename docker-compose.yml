@@ -24,7 +24,7 @@ services:
         depends_on:
           - verba_db
         env_file: .verba_env
-        command: bash -c "/myvenv/bin/python manage.py migrate && /myvenv/bin/python manage.py runserver 0.0.0.0:8000"
+        command: bash -c "/myvenv/bin/python manage.py migrate && /myvenv/bin/gunicorn verba.wsgi"
 
 networks:
     verba_network:
