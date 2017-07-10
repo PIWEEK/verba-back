@@ -25,7 +25,7 @@ SECRET_KEY = '-2(cf*!co+i7f1!e#%!an5@&31g!4^7rp#2u(0-5&rs2y=y-h@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'verba.piweek.com']
 
 
 # Application definition
