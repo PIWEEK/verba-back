@@ -16,7 +16,7 @@ class Author(models.Model):
 
 class Quote(models.Model):
     created = models.DateField(auto_now_add=True)
-    author = models.ForeignKey(Author)
+    author = models.ForeignKey(Author, related_name='quotes')
     text = models.TextField()
     date = models.DateField(blank=True,null=True)
     source = models.CharField(max_length=100, blank=True, null=True)

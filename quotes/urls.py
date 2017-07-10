@@ -5,7 +5,7 @@ from rest_framework.routers import DefaultRouter
 # Create a router and register our viewsets with it.
 router = DefaultRouter()
 router.register(r'quotes', views.QuoteViewSet)
-router.register(r'author', views.AuthorViewSet)
+router.register(r'authors', views.AuthorViewSet)
 
 # The API URLs are now determined automatically by the router.
 # Additionally, we include the login URLs for the browsable API.
