@@ -19,5 +19,5 @@ from quotes import urls as quotes_urls
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', include(quotes_urls))
+    url(r'^api/', include(quotes_urls))
 ]
