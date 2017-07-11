@@ -10,6 +10,9 @@ class Author(models.Model):
     image_alt = models.CharField(max_length=100, blank=True, null=True)
     wiki_link = models.CharField(max_length=100, blank=True, null=True)
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         ordering = ('name',)
 
