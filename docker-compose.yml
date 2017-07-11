@@ -18,7 +18,7 @@ services:
         image: verba_back:1.0
         container_name: verba_back
         volumes:
-            - data-static:/verba_back/static
+            - data-static:/verba-back/static
         networks:
             - verba_network
         depends_on:
@@ -37,7 +37,7 @@ services:
         ports:
             - "9000:9000"
         volumes:
-            - data-static:/verba_back/static
+            - data-static:/verba-back/static
         networks:
             - verba_network
 
