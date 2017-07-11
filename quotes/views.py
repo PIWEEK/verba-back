@@ -1,7 +1,11 @@
-from rest_framework import viewsets
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import viewsets
+from rest_framework.decorators import list_route
+from rest_framework.response import Response
+
 from quotes.models import Author, Quote
 from quotes.serializers import AuthorSerializer, QuoteSerializer
+
 
 class AuthorViewSet(viewsets.ReadOnlyModelViewSet):
     """
@@ -19,3 +23,7 @@ class QuoteViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = QuoteSerializer
     filter_backends = (DjangoFilterBackend,)
     filter_fields = ('author',)
+
+    @list_route()
+    def count(self, request):
+        return Response(self.filter_queryset(self.get_queryset()).count())
