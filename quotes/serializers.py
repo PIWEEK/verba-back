@@ -1,8 +1,17 @@
 from rest_framework import serializers
-from quotes.models import Author, Quote
+from quotes.models import Author, Quote, Tag
+
+
+class TagSerializer(serializers.HyperlinkedModelSerializer):
+
+    class Meta:
+        model = Tag
+        fields = ('name',)
+
 
 class AuthorSerializer(serializers.HyperlinkedModelSerializer):
     quotes = serializers.HyperlinkedRelatedField(many=True, view_name='quote-detail', read_only=True)
+
     class Meta:
         model = Author
         fields = ('id', 'name', 'bio', 'birth_date', 'death_date', 'image', 'image_alt', 'wiki_link', 'quotes')
@@ -10,7 +19,8 @@ class AuthorSerializer(serializers.HyperlinkedModelSerializer):
 
 class QuoteSerializer(serializers.HyperlinkedModelSerializer):
     author = serializers.HyperlinkedRelatedField(view_name='author-detail', read_only=True)
+    tags = serializers.HyperlinkedRelatedField(many=True, view_name='tag-detail', read_only=True)
 
     class Meta:
         model = Quote
-        fields = ('id', 'text', 'author', 'date', 'source')
+        fields = ('id', 'text', 'author', 'date', 'source', 'tags')

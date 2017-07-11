@@ -1,5 +1,11 @@
 from django.contrib import admin
-from quotes.models import Author, Quote
+from quotes.models import Author, Quote, Tag
+
+
+class TagAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+admin.site.register(Tag, TagAdmin)
+
 
 class AuthorAdmin(admin.ModelAdmin):
     list_display = ('name',)
