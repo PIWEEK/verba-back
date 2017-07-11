@@ -9,16 +9,16 @@ services:
         networks:
             - verba_network
         volumes:
-            - .db-data:/var/lib/postgresql
+            - ./db-data:/var/lib/postgresql
 
     verba_back:
         build:
             context: .
-            dockerfile: Dockerfile
+            dockerfile: docker/back
         image: verba_back:1.0
         container_name: verba_back
-        ports:
-            - "8000:8000"
+        volumes:
+            - data-static:/verba_back/static
         networks:
             - verba_network
         depends_on:
@@ -26,6 +26,25 @@ services:
         env_file: .verba_env
         command: bash -c "/myvenv/bin/python manage.py migrate && /myvenv/bin/python manage.py collectstatic --noinput && /myvenv/bin/gunicorn verba.wsgi -b 0.0.0.0:8000"
 
+    verba_server:
+        build:
+            context: .
+            dockerfile: docker/server
+        image: verba_server:1.0
+        depends_on:
+          - verba_back
+        container_name: verba_server
+        ports:
+            - "9000:9000"
+        volumes:
+            - data-static:/verba_back/static
+        networks:
+            - verba_network
+
+
 networks:
     verba_network:
         driver: bridge
+
+volumes:
+    data-static:
