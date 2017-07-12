@@ -10,6 +10,8 @@ services:
             - verba_network
         volumes:
             - ./db-data:/var/lib/postgresql
+        ports:
+            - "5432:5432"
 
     verba_back:
         build:
