@@ -11,11 +11,10 @@ class TagSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class AuthorSerializer(serializers.HyperlinkedModelSerializer):
-    quotes = serializers.HyperlinkedRelatedField(many=True, view_name='quote-detail', read_only=True)
 
     class Meta:
         model = Author
-        fields = ('id', 'url', 'name', 'bio', 'birth_date', 'death_date', 'image', 'image_alt', 'wiki_link', 'quotes')
+        fields = ('id', 'url', 'name', 'bio', 'birth_date', 'death_date', 'image', 'image_alt', 'wiki_link')
 
 
 class QuoteSerializer(serializers.HyperlinkedModelSerializer):
