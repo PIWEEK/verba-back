@@ -1,6 +1,7 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets
 from rest_framework.decorators import list_route
+from rest_framework.filters import OrderingFilter
 from rest_framework.response import Response
 
 from quotes.filters import QuoteFilter
@@ -22,9 +23,10 @@ class QuoteViewSet(viewsets.ReadOnlyModelViewSet):
     """
     queryset = Quote.objects.all()
     serializer_class = QuoteSerializer
-    filter_backends = (DjangoFilterBackend,)
+    filter_backends = (DjangoFilterBackend, OrderingFilter)
     filter_class = QuoteFilter
     filter_fields = ('author', 'tags__name')
+    ordering = ('?',)
 
     @list_route()
     def count(self, request):
