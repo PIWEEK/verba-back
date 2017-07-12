@@ -1,5 +1,4 @@
 from django_filters import Filter, FilterSet
-
 from quotes.models import Quote
 
 
@@ -21,3 +20,4 @@ class QuoteFilter(FilterSet):
     class Meta:
         model = Quote
         fields = ('tags',)
+
