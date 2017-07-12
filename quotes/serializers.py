@@ -18,7 +18,7 @@ class AuthorSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class QuoteSerializer(serializers.HyperlinkedModelSerializer):
-    author = serializers.HyperlinkedRelatedField(view_name='author-detail', read_only=True)
+    author = AuthorSerializer(read_only=True)
     tags = serializers.HyperlinkedRelatedField(many=True, view_name='tag-detail', read_only=True)
 
     class Meta:
