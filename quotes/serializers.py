@@ -15,12 +15,12 @@ class AuthorSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Author
-        fields = ('id', 'name', 'bio', 'birth_date', 'death_date', 'image', 'image_alt', 'wiki_link', 'quotes')
+        fields = ('id', 'url', 'name', 'bio', 'birth_date', 'death_date', 'image', 'image_alt', 'wiki_link', 'quotes')
 
 
 class QuoteSerializer(serializers.HyperlinkedModelSerializer):
-    author = serializers.HyperlinkedRelatedField(view_name='author-detail', read_only=True)
-    tags = serializers.HyperlinkedRelatedField(many=True, view_name='tag-detail', read_only=True)
+    author = AuthorSerializer(read_only=True)
+    tags = TagSerializer(many=True, read_only=True)
     related_quotes = serializers.SerializerMethodField()
 
     class Meta:
