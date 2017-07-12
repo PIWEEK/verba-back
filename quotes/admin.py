@@ -14,6 +14,7 @@ admin.site.register(Author, AuthorAdmin)
 
 class QuoteAdmin(admin.ModelAdmin):
     list_display = ('excerpt_text',)
+    filter_horizontal = ('tags',)
 
     def excerpt_text(self, obj):
         return obj.text[:50]
