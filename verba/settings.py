@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_filters',
     'quotes.apps.QuotesConfig',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +51,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'verba.urls'
@@ -136,3 +139,8 @@ REST_FRAMEWORK = {
 
 
 BASE_URL = os.environ.get('DOMAIN_URL', 'http://localhost:8000')
+
+
+CORS_ORIGIN_WHITELIST = (
+    'localhost:8000'
+)
