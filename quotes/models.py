@@ -17,9 +17,9 @@ class Author(models.Model):
     bio = models.TextField(blank=True, null=True)
     birth_date = models.DateField(blank=True,null=True)
     death_date = models.DateField(blank=True,null=True)
-    image = models.TextField(blank=True, null=True)
+    image = models.CharField(max_length=500, blank=True, null=True)
     image_alt = models.CharField(max_length=100, blank=True, null=True)
-    wiki_link = models.TextField(blank=True, null=True)
+    wiki_link = models.CharField(max_length=500, blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -34,7 +34,6 @@ class Quote(models.Model):
     text = models.TextField()
     date = models.DateField(blank=True,null=True)
     source = models.CharField(max_length=500, blank=True, null=True)
-    source = models.CharField(max_length=100, blank=True, null=True)
     tags = models.ManyToManyField(Tag)
 
     class Meta:
