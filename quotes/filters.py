@@ -1,4 +1,4 @@
-from django_filters import Filter, FilterSet
+from django_filters import Filter, FilterSet, CharFilter
 from quotes.models import Quote
 
 
@@ -16,8 +16,9 @@ class TagsFilter(Filter):
 
 class QuoteFilter(FilterSet):
     tags = TagsFilter(name='tags')
+    author = CharFilter(name='author')
 
     class Meta:
         model = Quote
-        fields = ('tags',)
+        fields = ('tags', 'author')
 
