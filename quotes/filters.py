@@ -1,9 +1,20 @@
 from django_filters import Filter, FilterSet, CharFilter
+from django.db.models import Q
 from quotes.models import Quote
+
+class AuthorFilter(Filter):
+    def filter(self, qs, value):
+        if not value:
+            return qs
+
+        authors = value.split(',')
+        q_objects = Q()
+        for author in authors:
+            q_objects |= Q(author__id=author)
+        return qs.filter(q_objects)
 
 
 class TagsFilter(Filter):
-
     def filter(self, qs, value):
         if not value:
             return qs
@@ -16,7 +27,7 @@ class TagsFilter(Filter):
 
 class QuoteFilter(FilterSet):
     tags = TagsFilter(name='tags')
-    author = CharFilter(name='author')
+    author = AuthorFilter(name='author')
 
     class Meta:
         model = Quote
