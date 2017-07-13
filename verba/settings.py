@@ -140,6 +140,4 @@ REST_FRAMEWORK = {
 BASE_URL = os.environ.get('DOMAIN_URL', 'http://localhost:8000')
 
 
-CORS_ORIGIN_WHITELIST = (
-    'localhost:8000'
-)
+CORS_ORIGIN_ALLOW_ALL = True
