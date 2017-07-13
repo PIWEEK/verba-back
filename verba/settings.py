@@ -25,7 +25,7 @@ SECRET_KEY = '-2(cf*!co+i7f1!e#%!an5@&31g!4^7rp#2u(0-5&rs2y=y-h@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'verba.piweek.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'verba-mujer.es']
 
 
 # Application definition
@@ -137,7 +137,7 @@ REST_FRAMEWORK = {
 }
 
 
-BASE_URL = os.environ.get('DOMAIN_URL', 'http://localhost:8000')
+BASE_URL = os.environ.get('DOMAIN_URL', 'http://verba-mujer.es')
 
 
 CORS_ORIGIN_ALLOW_ALL = True
