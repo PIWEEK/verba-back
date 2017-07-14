@@ -133,7 +133,7 @@ STATIC_URL = '/static/'
 # Pagination
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'quotes.pagination.QuotesPagination',
-    'PAGE_SIZE': 6
+    'PAGE_SIZE': 8
 }
 
 
