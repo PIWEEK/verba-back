@@ -137,7 +137,7 @@ REST_FRAMEWORK = {
 }
 
 
-BASE_URL = os.environ.get('DOMAIN_URL', 'http://verba-mujer.es')
+BASE_URL = os.environ.get('DOMAIN_URL', 'https://verba-mujer.es')
 
 
 CORS_ORIGIN_ALLOW_ALL = True
